@@ -4,11 +4,11 @@ import org.nrg.framework.annotations.XnatPlugin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-@XnatPlugin(value = "workshopAttendeePlugin", name = "Workshop Attendee Plugin", entityPackages = "org.nrg.xnat.workshop2016.entities")
+@XnatPlugin(value = "subjectMappingPlugin", name = "Subject Mapping Plugin", entityPackages = "org.nrg.xnat.workshop2016.entities")
 @ComponentScan({"org.nrg.xnat.workshop2016.services.impl", "org.nrg.xnat.workshop2016.repositories", "org.nrg.xnat.workshop2016.rest"})
-public class WorkshopAttendeeXnatPlugin {
+public class SubjectMappingXnatPlugin {
     @Bean
-    public String workshopAttendeePluginMessage() {
-        return "Hello there from the workshop attendee plugin!";
+    public String subjectMappingPluginMessage() {
+        return "Hello there from the subject mapping plugin!";
     }
 }

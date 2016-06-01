@@ -2,9 +2,7 @@ package org.nrg.xft.schema.extensions;
 
 import org.nrg.xft.schema.DataModelDefinition;
 
-
 public class CndaRadReadDefinition implements DataModelDefinition{
-
 	@Override
 	public String getSchemaPath() {
 		return "schemas/radRead/radRead.xsd";
@@ -24,5 +22,4 @@ public class CndaRadReadDefinition implements DataModelDefinition{
 	public boolean required() {
 		return false;
 	}
-
 }
