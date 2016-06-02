@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema targetNamespace="http://nrg.wustl.edu/xw2016" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://nrg.wustl.edu/xnat"/>
+	<xs:import namespace="http://nrg.wustl.edu/xnat" schemaLocation="../xnat/xnat.xsd"/>
 	<xs:element name="BiosampleCollection" type="biosampleCollection"/>
 	<xs:complexType name="biosampleCollection">
 		<xs:annotation>
