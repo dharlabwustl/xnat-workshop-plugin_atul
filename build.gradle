@@ -1,6 +1,6 @@
 def pluginVersion = '1.0.0-SNAPSHOT'
 
-group 'org.nrg.xnat.workshop2016'
+group 'org.nrg.xnat.demo'
 version pluginVersion
 
 def vXnat = '1.7.0-SNAPSHOT'
@@ -255,6 +255,11 @@ sourceSets {
                 srcDir 'src/main/resources'
             }
     }
+}
+
+clean {
+    delete 'src/beans'
+    delete 'src/generated'
 }
 
 task beanJar(type: Jar) {

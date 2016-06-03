@@ -1,4 +1,4 @@
-package org.nrg.xnat.workshop2016.plugin;
+package org.nrg.xnat.demo.plugin;
 
 public @interface SimpleAnnotation {
     int value() default 0;

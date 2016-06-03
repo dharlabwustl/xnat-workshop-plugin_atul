@@ -1,12 +1,12 @@
-package org.nrg.xnat.workshop2016.rest;
+package org.nrg.xnat.demo.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
-import org.nrg.xnat.workshop2016.entities.SubjectMapping;
-import org.nrg.xnat.workshop2016.services.SubjectMappingService;
+import org.nrg.xnat.demo.entities.SubjectMapping;
+import org.nrg.xnat.demo.services.SubjectMappingService;
 import org.nrg.xdat.rest.AbstractXnatRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-import java.util.Properties;
 
 @Api(description = "XNAT Subject Mapping API")
 @XapiRestController

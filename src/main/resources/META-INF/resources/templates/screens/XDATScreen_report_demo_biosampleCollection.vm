@@ -40,35 +40,35 @@ $page.setVlinkColor($ui.vlink)
                     <td>&nbsp;</td>
                     #formLabel("DNA")
                     <td valign="top">
-                        #showBoolean("xw2016:biosampleCollection/dna" $item)
+                        #showBoolean("demo:biosampleCollection/dna" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("RNA")
                     <td valign="top">
-                        #showBoolean("xw2016:biosampleCollection/rna" $item)
+                        #showBoolean("demo:biosampleCollection/rna" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("Plasma")
                     <td     valign="top">
-                        #showBoolean("xw2016:biosampleCollection/plasma" $item)
+                        #showBoolean("demo:biosampleCollection/plasma" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("Serum")
                     <td valign="top">
-                        #showBoolean("xw2016:biosampleCollection/serum" $item)
+                        #showBoolean("demo:biosampleCollection/serum" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("CSF")
                     <td valign="top">
-                        #showBoolean("xw2016:biosampleCollection/csf" $item)
+                        #showBoolean("demo:biosampleCollection/csf" $item)
                     </td>
                 </tr>
                 <tr>

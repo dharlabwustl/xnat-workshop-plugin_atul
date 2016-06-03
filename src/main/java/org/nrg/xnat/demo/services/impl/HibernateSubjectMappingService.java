@@ -1,9 +1,9 @@
-package org.nrg.xnat.workshop2016.services.impl;
+package org.nrg.xnat.demo.services.impl;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntityService;
-import org.nrg.xnat.workshop2016.entities.SubjectMapping;
-import org.nrg.xnat.workshop2016.repositories.SubjectMappingRepository;
-import org.nrg.xnat.workshop2016.services.SubjectMappingService;
+import org.nrg.xnat.demo.entities.SubjectMapping;
+import org.nrg.xnat.demo.repositories.SubjectMappingRepository;
+import org.nrg.xnat.demo.services.SubjectMappingService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

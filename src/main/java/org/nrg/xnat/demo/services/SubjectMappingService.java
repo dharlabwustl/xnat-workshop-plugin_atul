@@ -1,7 +1,7 @@
-package org.nrg.xnat.workshop2016.services;
+package org.nrg.xnat.demo.services;
 
 import org.nrg.framework.orm.hibernate.BaseHibernateService;
-import org.nrg.xnat.workshop2016.entities.SubjectMapping;
+import org.nrg.xnat.demo.entities.SubjectMapping;
 
 import java.util.List;
 

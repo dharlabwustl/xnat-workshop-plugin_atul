@@ -1,7 +1,7 @@
-package org.nrg.xnat.workshop2016.repositories;
+package org.nrg.xnat.demo.repositories;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateDAO;
-import org.nrg.xnat.workshop2016.entities.SubjectMapping;
+import org.nrg.xnat.demo.entities.SubjectMapping;
 import org.springframework.stereotype.Repository;
 
 @Repository
