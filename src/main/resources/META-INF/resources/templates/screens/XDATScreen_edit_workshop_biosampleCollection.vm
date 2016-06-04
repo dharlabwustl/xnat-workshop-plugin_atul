@@ -23,13 +23,13 @@ window.currentLabel="$!om.getLabel()";
 <form ID="biosampleAssessmentForm" name="biosampleAssessmentForm" method="post" action="$link.setAction("ModifySubjectAssessorData")">
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{part_id}">
-    <input type='hidden' name='demo:biosampleCollection/ID' value='$!item.getProperty("ID")'/>
-    <input type="hidden" name="demo:biosampleCollection/project" value='$!{project}'/>
-    <input type='hidden' name='demo:biosampleCollection/subject_ID' value='$!item.getProperty("demo:biosampleCollection/subject_ID")'/>
-    <input type='hidden' name='demo:biosampleCollection/label' value='$!item.getProperty("demo:biosampleCollection/label")'/>
-    <input type="hidden" name="demo:biosampleCollection.date.month" id="demo:biosampleCollection.date.month" value=""/>
-    <input type="hidden" name="demo:biosampleCollection.date.date" id="demo:biosampleCollection.date.date" value=""/>
-    <input type="hidden" name="demo:biosampleCollection.date.year" id="demo:biosampleCollection.date.year" value=""/>
+    <input type='hidden' name='workshop:biosampleCollection/ID' value='$!item.getProperty("ID")'/>
+    <input type="hidden" name="workshop:biosampleCollection/project" value='$!{project}'/>
+    <input type='hidden' name='workshop:biosampleCollection/subject_ID' value='$!item.getProperty("workshop:biosampleCollection/subject_ID")'/>
+    <input type='hidden' name='workshop:biosampleCollection/label' value='$!item.getProperty("workshop:biosampleCollection/label")'/>
+    <input type="hidden" name="workshop:biosampleCollection.date.month" id="workshop:biosampleCollection.date.month" value=""/>
+    <input type="hidden" name="workshop:biosampleCollection.date.date" id="workshop:biosampleCollection.date.date" value=""/>
+    <input type="hidden" name="workshop:biosampleCollection.date.year" id="workshop:biosampleCollection.date.year" value=""/>
     <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
 
     #if($vr)
@@ -64,31 +64,31 @@ window.currentLabel="$!om.getLabel()";
                          <tr>
                              #formLabel("DNA")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("demo:biosampleCollection/dna" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/dna" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("RNA")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("demo:biosampleCollection/rna" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/rna" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("Plasma")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("demo:biosampleCollection/plasma" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/plasma" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("Serum")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("demo:biosampleCollection/serum" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/serum" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("CSF")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("demo:biosampleCollection/CSF" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/CSF" $item $vr)
                              </td>
                          </tr>
                      </table>
@@ -114,9 +114,9 @@ window.currentLabel="$!om.getLabel()";
 <script type="text/javascript">
     function validateForm() {
         var today = new Date();
-        document.getElementById('demo:biosampleCollection.date.month').value = today.getMonth();
-        document.getElementById('demo:biosampleCollection.date.date').value = today.getDate();
-        document.getElementById('demo:biosampleCollection.date.year').value = today.getFullYear();
+        document.getElementById('workshop:biosampleCollection.date.month').value = today.getMonth();
+        document.getElementById('workshop:biosampleCollection.date.date').value = today.getDate();
+        document.getElementById('workshop:biosampleCollection.date.year').value = today.getFullYear();
 
         document.biosampleAssessmentForm.submit();
         return true;

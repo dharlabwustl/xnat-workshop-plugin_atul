@@ -1,12 +1,12 @@
-package org.nrg.xnat.demo.rest;
+package org.nrg.xnat.workshop.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
-import org.nrg.xnat.demo.entities.SubjectMapping;
-import org.nrg.xnat.demo.services.SubjectMappingService;
+import org.nrg.xnat.workshop.entities.SubjectMapping;
+import org.nrg.xnat.workshop.services.SubjectMappingService;
 import org.nrg.xdat.rest.AbstractXnatRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

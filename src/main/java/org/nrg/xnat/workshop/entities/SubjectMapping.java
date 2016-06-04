@@ -1,4 +1,4 @@
-package org.nrg.xnat.demo.entities;
+package org.nrg.xnat.workshop.entities;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 
