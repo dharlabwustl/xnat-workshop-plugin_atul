@@ -112,6 +112,10 @@ if (hasProperty("rt.17.jar")) {
     logger.warn "  ./gradlew -Prt.17.jar=rt-1.7.0_45.jar war\n"
 }
 
+compileJava {
+    options.fork = false
+}
+
 configurations {
     all*.exclude group: 'avalon-framework'
     all*.exclude group: 'avalon-logkit'
