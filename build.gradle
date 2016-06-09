@@ -12,6 +12,7 @@ def vSpringSecurity = '4.0.4.RELEASE'
 def vSwagger = '2.3.1'
 
 apply plugin: 'groovy'
+apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'idea'
