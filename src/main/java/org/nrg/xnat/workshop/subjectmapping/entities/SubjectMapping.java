@@ -1,4 +1,4 @@
-package org.nrg.xnat.workshop.entities;
+package org.nrg.xnat.workshop.subjectmapping.entities;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 

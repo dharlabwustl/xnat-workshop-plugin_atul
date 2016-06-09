@@ -166,6 +166,7 @@ dependencies {
     compile("org.nrg.xdat:core:${vXnat}") {
         exclude group: '*'
     }
+    compile "org.nrg:prefs:${vXnat}"
     compile "org.nrg:framework:${vXnat}"
 
     compile "org.reflections:reflections:0.9.10"

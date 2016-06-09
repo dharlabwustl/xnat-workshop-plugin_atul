@@ -1,12 +1,13 @@
-package org.nrg.xnat.workshop.rest;
+package org.nrg.xnat.workshop.subjectmapping.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
-import org.nrg.xnat.workshop.entities.SubjectMapping;
-import org.nrg.xnat.workshop.services.SubjectMappingService;
+import org.nrg.xnat.workshop.subjectmapping.entities.SubjectMapping;
+import org.nrg.xnat.workshop.subjectmapping.preferences.SubjectMappingPreferencesBean;
+import org.nrg.xnat.workshop.subjectmapping.services.SubjectMappingService;
 import org.nrg.xdat.rest.AbstractXnatRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,8 @@ import java.util.List;
 
 @Api(description = "XNAT Subject Mapping API")
 @XapiRestController
-@RequestMapping(value = "/subjects")
-public class SubjectMappingRestController extends AbstractXnatRestApi {
+@RequestMapping(value = "/subjectmapping")
+public class SubjectMappingApi extends AbstractXnatRestApi {
     @ApiOperation(value = "Returns a list of all subject mappings.",
                   notes = "Disregards source system.",
                   response = SubjectMapping.class, responseContainer = "List")
@@ -85,6 +86,29 @@ public class SubjectMappingRestController extends AbstractXnatRestApi {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Returns a list of the source system IDs.", response = String.class, responseContainer = "List")
+    @ApiResponses({@ApiResponse(code = 200, message = "Source system IDs successfully retrieved."),
+            @ApiResponse(code = 401, message = "Must be authenticated to access the XNAT REST API."),
+            @ApiResponse(code = 500, message = "Unexpected error")})
+    @RequestMapping(value = "sources", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    public ResponseEntity<List<String>> getSourceIds() {
+        return new ResponseEntity<>(_prefs.getSourceSystemIds(), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Sets the submitted source system IDs.",
+            response = Void.class)
+    @ApiResponses({@ApiResponse(code = 200, message = "Source system IDs successfully created."),
+            @ApiResponse(code = 401, message = "Must be authenticated to access the XNAT REST API."),
+            @ApiResponse(code = 500, message = "Unexpected error")})
+    @RequestMapping(value = "sources", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST)
+    public ResponseEntity<Void> setSourceIds(@RequestBody final List<String> sourceIds) {
+        _prefs.setSourceSystemIds(sourceIds);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @Autowired
     private SubjectMappingService _service;
+
+    @Autowired
+    private SubjectMappingPreferencesBean _prefs;
 }

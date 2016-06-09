@@ -14,7 +14,10 @@ import org.springframework.context.annotation.ComponentScan;
                           @XnatDataModel(value = RadRadiologyreaddataBean.SCHEMA_ELEMENT_NAME,
                                          singular = "Radiology Read",
                                          plural = "Radiology Reads")})
-@ComponentScan({"org.nrg.xnat.workshop.services.impl", "org.nrg.xnat.workshop.repositories", "org.nrg.xnat.workshop.rest"})
+@ComponentScan({"org.nrg.xnat.workshop.subjectmapping.preferences",
+        "org.nrg.xnat.workshop.subjectmapping.repositories",
+        "org.nrg.xnat.workshop.subjectmapping.rest",
+        "org.nrg.xnat.workshop.subjectmapping.services.impl"})
 public class WorkshopXnatPlugin {
     @Bean
     public String workshopPluginMessage() {
