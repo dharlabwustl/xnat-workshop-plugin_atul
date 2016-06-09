@@ -1,4 +1,4 @@
 <!-- Sequence: 6 -->
 <li class="yuimenuitem">
-    <A href="" ONCLICK="showFiles();return false;"><div class="ic">#if($actionObject.hasImage())<img border="0" src="$content.getURI("scripts/yui/build/treeview/assets/img/folders/cf.gif")"/>#else&nbsp;#end</div><div class="ic_spacer">&nbsp;</div>Add Biosamples</A>
+    <A href="$link.setPage('XDATScreen_edit_workshop_biosampleCollection.vm')"><div class="ic">&nbsp;</div><div class="ic_spacer">&nbsp;</div>Add Biosamples</A>
 </li>
