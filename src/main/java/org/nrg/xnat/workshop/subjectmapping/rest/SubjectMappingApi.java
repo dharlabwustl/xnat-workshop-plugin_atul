@@ -5,10 +5,12 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
+import org.nrg.xdat.rest.AbstractXapiRestController;
+import org.nrg.xdat.security.services.RoleHolder;
+import org.nrg.xdat.security.services.UserManagementServiceI;
 import org.nrg.xnat.workshop.subjectmapping.entities.SubjectMapping;
 import org.nrg.xnat.workshop.subjectmapping.preferences.SubjectMappingPreferencesBean;
 import org.nrg.xnat.workshop.subjectmapping.services.SubjectMappingService;
-import org.nrg.xdat.rest.AbstractXnatRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +25,14 @@ import java.util.List;
 @Api(description = "XNAT Subject Mapping API")
 @XapiRestController
 @RequestMapping(value = "/subjectmapping")
-public class SubjectMappingApi extends AbstractXnatRestApi {
+public class SubjectMappingApi extends AbstractXapiRestController {
+    @Autowired
+    public SubjectMappingApi(final UserManagementServiceI userManagementService, final RoleHolder roleHolder, final SubjectMappingService subjectMappingService, final SubjectMappingPreferencesBean preferences) {
+        super(userManagementService, roleHolder);
+        _subjectMappingService = subjectMappingService;
+        _preferences = preferences;
+    }
+
     @ApiOperation(value = "Returns a list of all subject mappings.",
                   notes = "Disregards source system.",
                   response = SubjectMapping.class, responseContainer = "List")
@@ -32,7 +41,7 @@ public class SubjectMappingApi extends AbstractXnatRestApi {
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public ResponseEntity<List<SubjectMapping>> getEntities() {
-        return new ResponseEntity<>(_service.getAll(), HttpStatus.OK);
+        return new ResponseEntity<>(_subjectMappingService.getAll(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Creates a new subject mapping.",
@@ -43,7 +52,7 @@ public class SubjectMappingApi extends AbstractXnatRestApi {
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST)
     public ResponseEntity<SubjectMapping> createEntity(@RequestBody final SubjectMapping entity) {
-        final SubjectMapping created = _service.create(entity);
+        final SubjectMapping created = _subjectMappingService.create(entity);
         return new ResponseEntity<>(created, HttpStatus.OK);
     }
 
@@ -55,7 +64,7 @@ public class SubjectMappingApi extends AbstractXnatRestApi {
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public ResponseEntity<SubjectMapping> getEntity(@PathVariable final Long id) {
-        return new ResponseEntity<>(_service.retrieve(id), HttpStatus.OK);
+        return new ResponseEntity<>(_subjectMappingService.retrieve(id), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Updates the indicated subject mapping.",
@@ -66,10 +75,10 @@ public class SubjectMappingApi extends AbstractXnatRestApi {
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.PUT)
     public ResponseEntity<Void> updateEntity(@PathVariable final Long id, @RequestBody final SubjectMapping entity) {
-        final SubjectMapping existing = _service.retrieve(id);
+        final SubjectMapping existing = _subjectMappingService.retrieve(id);
         existing.setSubjectId(entity.getSubjectId());
         existing.setSource(entity.getSource());
-        _service.update(existing);
+        _subjectMappingService.update(existing);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -81,8 +90,8 @@ public class SubjectMappingApi extends AbstractXnatRestApi {
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteEntity(@PathVariable final Long id) {
-        final SubjectMapping existing = _service.retrieve(id);
-        _service.delete(existing);
+        final SubjectMapping existing = _subjectMappingService.retrieve(id);
+        _subjectMappingService.delete(existing);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -92,7 +101,7 @@ public class SubjectMappingApi extends AbstractXnatRestApi {
             @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "sources", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public ResponseEntity<List<String>> getSourceIds() {
-        return new ResponseEntity<>(_prefs.getSourceSystemIds(), HttpStatus.OK);
+        return new ResponseEntity<>(_preferences.getSourceSystemIds(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Sets the submitted source system IDs.",
@@ -102,13 +111,10 @@ public class SubjectMappingApi extends AbstractXnatRestApi {
             @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "sources", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST)
     public ResponseEntity<Void> setSourceIds(@RequestBody final List<String> sourceIds) {
-        _prefs.setSourceSystemIds(sourceIds);
+        _preferences.setSourceSystemIds(sourceIds);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @Autowired
-    private SubjectMappingService _service;
-
-    @Autowired
-    private SubjectMappingPreferencesBean _prefs;
+    private final SubjectMappingService         _subjectMappingService;
+    private final SubjectMappingPreferencesBean _preferences;
 }
