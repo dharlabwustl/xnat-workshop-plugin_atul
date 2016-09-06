@@ -1,14 +1,21 @@
 package org.nrg.xnat.workshop.subjectmapping.preferences;
 
+import org.nrg.framework.configuration.ConfigPaths;
 import org.nrg.prefs.annotations.NrgPreference;
 import org.nrg.prefs.annotations.NrgPreferenceBean;
 import org.nrg.prefs.beans.AbstractPreferenceBean;
 import org.nrg.prefs.exceptions.InvalidPreferenceName;
+import org.nrg.prefs.services.NrgPreferenceService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @NrgPreferenceBean(toolId = "subjectMapping", toolName = "XNAT Subject Mapping Plugin")
 public class SubjectMappingPreferencesBean extends AbstractPreferenceBean {
+    @Autowired
+    public SubjectMappingPreferencesBean(final NrgPreferenceService preferenceService, final ConfigPaths configFolderPaths) {
+        super(preferenceService, configFolderPaths);
+    }
 
     @NrgPreference
     public List<String> getSourceSystemIds() {
