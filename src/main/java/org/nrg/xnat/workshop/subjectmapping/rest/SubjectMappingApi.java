@@ -5,9 +5,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
-import org.nrg.xdat.rest.AbstractXapiRestController;
-import org.nrg.xdat.security.services.RoleHolder;
-import org.nrg.xdat.security.services.UserManagementServiceI;
 import org.nrg.xnat.workshop.subjectmapping.entities.SubjectMapping;
 import org.nrg.xnat.workshop.subjectmapping.preferences.SubjectMappingPreferencesBean;
 import org.nrg.xnat.workshop.subjectmapping.services.SubjectMappingService;
@@ -25,11 +22,14 @@ import java.util.List;
 @Api(description = "XNAT Subject Mapping API")
 @XapiRestController
 @RequestMapping(value = "/subjectmapping")
-public class SubjectMappingApi extends AbstractXapiRestController {
+public class SubjectMappingApi {
     @Autowired
-    public SubjectMappingApi(final UserManagementServiceI userManagementService, final RoleHolder roleHolder, final SubjectMappingService subjectMappingService, final SubjectMappingPreferencesBean preferences) {
-        super(userManagementService, roleHolder);
+    public void setSubjectMappingService(final SubjectMappingService subjectMappingService) {
         _subjectMappingService = subjectMappingService;
+    }
+
+    @Autowired
+    final void setSubjectMappingPreferencesBean(final SubjectMappingPreferencesBean preferences) {
         _preferences = preferences;
     }
 
@@ -115,6 +115,6 @@ public class SubjectMappingApi extends AbstractXapiRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    private final SubjectMappingService         _subjectMappingService;
-    private final SubjectMappingPreferencesBean _preferences;
+    private SubjectMappingService         _subjectMappingService;
+    private SubjectMappingPreferencesBean _preferences;
 }
