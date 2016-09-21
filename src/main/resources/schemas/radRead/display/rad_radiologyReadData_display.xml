@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ xnat-workshop-plugin: /home/rherrick/Development/Release/1.7/plugins/xnat-workshop-plugin/src/main/resources/schemas/radRead/display/rad_radiologyReadData_display.xml
+  ~ XNAT http://www.xnat.org
+  ~ Copyright (c) 2016, Washington University School of Medicine
+  ~ All Rights Reserved
+  ~
+  ~ Released under the Simplified BSD.
+  -->
+
 <Displays xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xdat/display.xsd" schema-element="rad:radiologyReadData" full-description="RadiologyRead" brief-description="RadiologyRead">
 	<DisplayField id="INSERT_DATE" header="Inserted" visible="true" searchable="true" data-type="string">
 		<DisplayFieldElement name="Field1" schema-element="rad:radiologyReadData.meta.insert_date"/>
