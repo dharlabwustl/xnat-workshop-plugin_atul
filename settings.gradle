@@ -7,4 +7,4 @@
  * Released under the Simplified BSD.
  */
 
-rootProject.name = 'xnat-workshop-plugin'
+rootProject.name = 'xnat-workshop'

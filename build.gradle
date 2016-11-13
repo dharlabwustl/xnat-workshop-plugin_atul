@@ -12,7 +12,7 @@ def pluginVersion = '1.0.0-SNAPSHOT'
 group 'org.nrg.xnat.workshop'
 version pluginVersion
 
-def vXnat = '1.7.0'
+def vXnat = '1.7.1-SNAPSHOT'
 def vJunit = '4.12'
 def vSpring = '4.2.7.RELEASE'
 def vSlf4j = '1.7.21'
@@ -33,16 +33,16 @@ buildscript {
         mavenLocal()
         jcenter()
         maven {
-            url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-release'
+            url 'https://nrgxnat.jfrog.io/nrgxnat/libs-release'
             name 'XNAT Release Repository'
         }
         maven {
-            url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-snapshot'
+            url 'https://nrgxnat.jfrog.io/nrgxnat/libs-snapshot'
             name 'XNAT Snapshot Repository'
         }
     }
     dependencies {
-        classpath "org.nrg.xnat.build:xnat-data-builder:1.7.0"
+        classpath "org.nrg.xnat.build:xnat-data-builder:1.7.1-SNAPSHOT"
     }
     configurations {
         all*.exclude group: 'avalon-framework'
@@ -86,20 +86,20 @@ buildscript {
 
 repositories {
     mavenLocal()
+    mavenCentral()
+    jcenter()
     maven {
-        url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-release'
+        url 'https://nrgxnat.jfrog.io/nrgxnat/libs-release'
         name 'XNAT Release Repository'
     }
     maven {
-        url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-snapshot'
+        url 'https://nrgxnat.jfrog.io/nrgxnat/libs-snapshot'
         name 'XNAT Snapshot Repository'
     }
     maven {
-        url 'https://nrgxnat.artifactoryonline.com/nrgxnat/ext-release'
+        url 'https://nrgxnat.jfrog.io/nrgxnat/ext-release'
         name 'XNAT External Release Repository'
     }
-    mavenCentral()
-    jcenter()
 }
 
 sourceCompatibility = 1.7
@@ -124,45 +124,6 @@ if (hasProperty("rt.17.jar")) {
 
 compileJava {
     options.fork = false
-}
-
-configurations {
-    all*.exclude group: 'avalon-framework'
-    all*.exclude group: 'avalon-logkit'
-    all*.exclude group: 'com.metaparadigm'
-    all*.exclude group: 'com.sun.mail'
-    all*.exclude group: 'excalibur-component'
-    all*.exclude group: 'excalibur-instrument'
-    all*.exclude group: 'excalibur-logger'
-    all*.exclude group: 'excalibur-pool'
-    all*.exclude group: 'fop'
-    all*.exclude group: 'geronimo-spec'
-    all*.exclude group: 'hsqldb'
-    all*.exclude group: 'imagej'
-    all*.exclude group: 'jamon'
-    all*.exclude group: 'jakarta-regexp'
-    all*.exclude group: 'org.apache.geronimo.specs'
-    all*.exclude group: 'velocity'
-    all*.exclude group: 'xmlrpc'
-    all*.exclude group: 'ant', module: 'ant'
-    all*.exclude group: 'commons-email', module: 'commons-email'
-    all*.exclude group: 'edu.ucar', module: 'netcdf'
-    all*.exclude group: 'javax.jms', module: 'jms'
-    all*.exclude group: 'javax.mail', module: 'mail'
-    all*.exclude group: 'javax.servlet', module: 'servlet-api'
-    all*.exclude group: 'javax.sql', module: 'jdbc-stdext'
-    all*.exclude group: 'javax.transaction', module: 'jta'
-    all*.exclude group: 'jdbc', module: 'jdbc'
-    all*.exclude group: 'jms', module: 'jms'
-    all*.exclude group: 'jython', module: 'jython'
-    all*.exclude group: 'org.nrg', module: 'nrg'
-    all*.exclude group: 'net.sf.saxon', module: 'saxon'
-    all*.exclude group: 'stax', module: 'stax-api'
-    all*.exclude group: 'xml-apis', module: 'xml-apis'
-    all*.exclude module: 'commons-beanutils-core'
-    all*.exclude module: 'log4j-slf4j-impl'
-    all*.exclude module: 'pipelineCNDAXNAT'
-    all*.exclude module: 'slf4j-simple'
 }
 
 dependencies {
@@ -192,7 +153,7 @@ dependencies {
     compile "org.slf4j:slf4j-log4j12:${vSlf4j}"
     compile "org.slf4j:jul-to-slf4j:${vSlf4j}"
     compile "log4j:log4j:${vLog4j}"
-    
+
     compile "org.springframework:spring-aop:${vSpring}"
     compile "org.springframework:spring-beans:${vSpring}"
     compile "org.springframework:spring-context-support:${vSpring}"
@@ -206,91 +167,49 @@ dependencies {
     compile "org.springframework:spring-tx:${vSpring}"
     compile "org.springframework:spring-web:${vSpring}"
     compile "org.springframework:spring-webmvc:${vSpring}"
-        
+
     compile "io.springfox:springfox-swagger2:${vSwagger}"
     compile "io.springfox:springfox-swagger-ui:${vSwagger}"
-        
+
     compile "org.springframework.security:spring-security-acl:${vSpringSecurity}"
     compile "org.springframework.security:spring-security-aspects:${vSpringSecurity}"
     compile "org.springframework.security:spring-security-config:${vSpringSecurity}"
     compile "org.springframework.security:spring-security-ldap:${vSpringSecurity}"
     compile "org.springframework.security:spring-security-taglibs:${vSpringSecurity}"
     compile "org.springframework.ldap:spring-ldap-core:2.0.4.RELEASE"
-    
+
     runtime "ecs:ecs:1.4.2"
-    
+
     testCompile "junit:junit:${vJunit}"
     testCompile "org.springframework:spring-test:${vSpring}"
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+publishing.publications {
+    mavenJava(MavenPublication) {
+        from components.java
 
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('name', 'XNAT Workshop 2016 Plugin')
-                root.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
-                root.appendNode('inceptionYear', '2016')
+        pom.withXml {
+            def root = asNode()
+            root.appendNode('name', 'XNAT Workshop 2016 Plugin')
+            root.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
+            root.appendNode('inceptionYear', '2016')
 
-                def scm = root.appendNode('scm')
-                scm.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
-                scm.appendNode('connection', 'scm:https://github.com/XnatWorkshop/xnat-workshop-plugin.git')
-                scm.appendNode('developerConnection', 'scm:git://github.com/XnatWorkshop/xnat-workshop-plugin.git')
+            def scm = root.appendNode('scm')
+            scm.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
+            scm.appendNode('connection', 'scm:https://github.com/XnatWorkshop/xnat-workshop-plugin.git')
+            scm.appendNode('developerConnection', 'scm:git://github.com/XnatWorkshop/xnat-workshop-plugin.git')
 
-                def license = root.appendNode('licenses').appendNode('license')
-                license.appendNode('name', 'Simplified BSD 2-Clause License')
-                license.appendNode('url', 'http://xnat.org/about/license.php')
-                license.appendNode('distribution', 'repo')
+            def license = root.appendNode('licenses').appendNode('license')
+            license.appendNode('name', 'Simplified BSD 2-Clause License')
+            license.appendNode('url', 'http://xnat.org/about/license.php')
+            license.appendNode('distribution', 'repo')
 
-                def developers = root.appendNode('developers')
+            def developers = root.appendNode('developers')
 
-                def tolsen = developers.appendNode('developer')
-                tolsen.appendNode('id', 'timolsen23')
-                tolsen.appendNode('name', 'Tim Olsen')
-                tolsen.appendNode('email', 'tim@deck5consulting.com')
-            }
+            def tolsen = developers.appendNode('developer')
+            tolsen.appendNode('id', 'timolsen23')
+            tolsen.appendNode('name', 'Tim Olsen')
+            tolsen.appendNode('email', 'tim@deck5consulting.com')
         }
     }
-}
-
-
-sourceSets {
-    main {
-            java {
-                srcDir 'src/beans/java'
-                srcDir 'src/generated/java'
-                srcDir 'src/main/java'
-            }
-            resources {
-                srcDir 'src/beans/resources'
-                srcDir 'src/generated/resources'
-                srcDir 'src/main/resources'
-            }
-    }
-}
-
-clean {
-    delete 'src/beans'
-    delete 'src/generated'
-}
-
-task beanJar(type: Jar) {
-    baseName = "${project.name}-beans"
-    from(sourceSets.main.output) {
-        include "org/nrg/xdat/bean/**"
-        include "org/nrg/xdat/model/**"
-    }
-}
-
-
-task mainJar(type: Jar) {
-    baseName = "${project.name}-plugin"
-    from sourceSets.main.output
-}
-
-artifacts {
-    archives mainJar
-    archives beanJar
 }
