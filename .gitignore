@@ -2,7 +2,7 @@
 *.log
 /target
 /build
-/.gradle
+.gradle*
 /.idea
 src/beans
 src/generated
