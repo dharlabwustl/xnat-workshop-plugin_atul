@@ -22,11 +22,11 @@ window.currentLabel="$!om.getLabel()";
 <div id="biosampleAssessmentFormDiv">
 <form ID="biosampleAssessmentForm" name="biosampleAssessmentForm" method="post" action="$link.setAction("ModifySubjectAssessorData")">
     <input type="hidden" name="project" value="$!{project}">
-    <input type="hidden" name="part_id" value="$!{part_id}">
+    <input type="hidden" name="part_id" value="$!{subjectId}">
     <input type='hidden' name='workshop:biosampleCollection/ID' value='$!item.getProperty("ID")'/>
     <input type="hidden" name="workshop:biosampleCollection/project" value='$!{project}'/>
-    <input type='hidden' name='workshop:biosampleCollection/subject_ID' value='$!item.getProperty("workshop:biosampleCollection/subject_ID")'/>
-    <input type='hidden' name='workshop:biosampleCollection/label' value='$!item.getProperty("workshop:biosampleCollection/label")'/>
+    <input type='hidden' name='workshop:biosampleCollection/subject_ID' value='$!{subjectId}'/>
+    <input type='hidden' name='workshop:biosampleCollection/label' value='$!label'/>
     <input type="hidden" name="workshop:biosampleCollection.date.month" id="workshop:biosampleCollection.date.month" value=""/>
     <input type="hidden" name="workshop:biosampleCollection.date.date" id="workshop:biosampleCollection.date.date" value=""/>
     <input type="hidden" name="workshop:biosampleCollection.date.year" id="workshop:biosampleCollection.date.year" value=""/>
