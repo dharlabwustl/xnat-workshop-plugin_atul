@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ xnat-workshop-plugin: /home/rherrick/Development/Release/1.7/plugins/xnat-workshop-plugin/src/main/resources/schemas/workshop/workshop.xsd
+  ~ xnat-workshop: /Users/rherrick/Development/XNAT/1.7/plugins/xnat-workshop-plugin/src/main/resources/schemas/workshop/workshop.xsd
   ~ XNAT http://www.xnat.org
-  ~ Copyright (c) 2016, Washington University School of Medicine
+  ~ Copyright (c) 2017, Washington University School of Medicine
   ~ All Rights Reserved
   ~
   ~ Released under the Simplified BSD.

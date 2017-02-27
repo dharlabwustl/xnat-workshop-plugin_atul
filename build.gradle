@@ -1,35 +1,16 @@
 /*
- * xnat-workshop-plugin: build.gradle
+ * xnat-workshop: build.gradle
  * XNAT http://www.xnat.org
- * Copyright (c) 2016, Washington University School of Medicine
+ * Copyright (c) 2017, Washington University School of Medicine
  * All Rights Reserved
  *
  * Released under the Simplified BSD.
  */
 
-def pluginVersion = '1.0.0'
-
-group 'org.nrg.xnat.workshop'
-version pluginVersion
-
-def vXnat = '1.7.1'
-def vJunit = '4.12'
-def vSpring = '4.2.7.RELEASE'
-def vSlf4j = '1.7.21'
-def vLog4j = '1.2.17'
-def vSpringSecurity = '4.0.4.RELEASE'
-def vSwagger = '2.4.0'
-
-apply plugin: 'groovy'
-apply plugin: 'java'
-apply plugin: 'jacoco'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'xnat-data-builder'
-
 buildscript {
+    ext {
+        vXnat = '1.7.2'
+    }
     repositories {
         mavenLocal()
         mavenCentral()
@@ -44,9 +25,33 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.nrg.xnat.build:xnat-data-builder:1.7.1"
+        classpath "org.nrg.xnat.build:xnat-data-builder:${vXnat}"
     }
 }
+
+def pluginVersion = '1.0.0'
+
+group 'org.nrg.xnat.workshop'
+version pluginVersion
+
+def vXnat = '1.7.2'
+def vJunit = '4.12'
+def vSpring = '4.2.9.RELEASE'
+def vSpringSecurity = '4.0.4.RELEASE'
+def vSlf4j = '1.7.21'
+def vLog4j = '1.2.17'
+def vSwagger = '2.4.0'
+def vJacoco = '0.7.8'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'xnat-data-builder'
+
 
 repositories {
     mavenLocal()
@@ -91,7 +96,7 @@ compileJava {
 }
 
 jacoco {
-    toolVersion = "0.7.7.201606060606"
+    toolVersion = "${vJacoco}"
 }
 
 jacocoTestReport {
