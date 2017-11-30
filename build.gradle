@@ -7,42 +7,13 @@
  * Released under the Simplified BSD.
  */
 
-buildscript {
-    ext {
-        vXnat = '1.7.2'
-    }
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        jcenter()
-        maven {
-            url 'https://nrgxnat.jfrog.io/nrgxnat/libs-release'
-            name 'XNAT Release Repository'
-        }
-        maven {
-            url 'https://nrgxnat.jfrog.io/nrgxnat/libs-snapshot'
-            name 'XNAT Snapshot Repository'
-        }
-    }
-    dependencies {
-        classpath "org.nrg.xnat.build:xnat-data-builder:${vXnat}"
-    }
-}
-
+def groupName = 'org.nrg.xnat.workshop'
 def pluginVersion = '1.0.0'
 
-group 'org.nrg.xnat.workshop'
+group groupName
 version pluginVersion
 
-def vXnat = '1.7.2'
-def vJunit = '4.12'
-def vSpring = '4.2.9.RELEASE'
-def vSpringSecurity = '4.0.4.RELEASE'
-def vSlf4j = '1.7.25'
-def vLog4j = '1.2.17'
-def vSwagger = '2.4.0'
-def vJacoco = '0.7.8'
-
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'jacoco'
@@ -52,15 +23,37 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'xnat-data-builder'
 
+buildscript {
+    ext {
+        vXnat = '1.7.4'
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url 'https://nrgxnat.jfrog.io/nrgxnat/libs-release'
+            name 'XNAT Release Repository'
+        }
+        mavenCentral()
+        jcenter()
+        maven {
+            url 'https://nrgxnat.jfrog.io/nrgxnat/libs-snapshot'
+            name 'XNAT Snapshot Repository'
+        }
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
+        classpath "org.nrg.xnat.build:xnat-data-builder:${vXnat}"
+    }
+}
 
 repositories {
     mavenLocal()
-    mavenCentral()
-    jcenter()
     maven {
         url 'https://nrgxnat.jfrog.io/nrgxnat/libs-release'
         name 'XNAT Release Repository'
     }
+    mavenCentral()
+    jcenter()
     maven {
         url 'https://nrgxnat.jfrog.io/nrgxnat/libs-snapshot'
         name 'XNAT Snapshot Repository'
@@ -96,7 +89,7 @@ compileJava {
 }
 
 jacoco {
-    toolVersion = "${vJacoco}"
+    toolVersion = "0.7.9"
 }
 
 jacocoTestReport {
@@ -120,65 +113,73 @@ sourceSets {
     }
 }
 
+configurations {
+    all*.exclude group: 'jamon'
+}
+
+dependencyManagement.imports {
+    mavenBom "org.nrg:parent:${vXnat}"
+}
+
 dependencies {
-    compile("org.nrg.xnat:web:${vXnat}") {
+    compile("org.nrg.xnat:web") {
         exclude group: '*'
     }
-    compile("org.nrg.xnat:xnat-data-models:${vXnat}") {
+    compile("org.nrg.xnat:xnat-data-models") {
         exclude group: '*'
     }
-    compile("org.nrg.xdat:core:${vXnat}") {
+    compile("org.nrg.xdat:core") {
         exclude group: '*'
     }
-    compile "org.nrg:prefs:${vXnat}"
-    compile "org.nrg:framework:${vXnat}"
+    compile "org.nrg:prefs"
+    compile "org.nrg:framework"
 
-    compile "org.reflections:reflections:0.9.10"
-    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile "org.reflections:reflections"
+    compile "javax.servlet:javax.servlet-api"
 
-    compile(group: 'turbine', name: 'turbine', version: '2.3.3') {
+    compile("turbine:turbine") {
         exclude group: '*'
     }
-    compile(group: 'org.apache.velocity', name: 'velocity', version: '1.7') {
+    compile("org.apache.velocity:velocity") {
         exclude group: '*'
     }
 
-    compile "org.slf4j:slf4j-api:${vSlf4j}"
-    compile "org.slf4j:slf4j-log4j12:${vSlf4j}"
-    compile "org.slf4j:jul-to-slf4j:${vSlf4j}"
-    compile "log4j:log4j:${vLog4j}"
+    compile "org.slf4j:slf4j-api"
+    compile "org.slf4j:slf4j-log4j12"
+    compile "org.slf4j:jul-to-slf4j"
+    compile "log4j:log4j"
 
-    compile "org.springframework:spring-aop:${vSpring}"
-    compile "org.springframework:spring-beans:${vSpring}"
-    compile "org.springframework:spring-context-support:${vSpring}"
-    compile "org.springframework:spring-context:${vSpring}"
-    compile "org.springframework:spring-core:${vSpring}"
-    compile "org.springframework:spring-jdbc:${vSpring}"
-    compile "org.springframework:spring-jms:${vSpring}"
-    compile "org.springframework:spring-messaging:${vSpring}"
-    compile "org.springframework:spring-orm:${vSpring}"
-    compile "org.springframework:spring-oxm:${vSpring}"
-    compile "org.springframework:spring-tx:${vSpring}"
-    compile "org.springframework:spring-web:${vSpring}"
-    compile "org.springframework:spring-webmvc:${vSpring}"
+    compile "org.springframework:spring-aop"
+    compile "org.springframework:spring-beans"
+    compile "org.springframework:spring-context-support"
+    compile "org.springframework:spring-context"
+    compile "org.springframework:spring-core"
+    compile "org.springframework:spring-jdbc"
+    compile "org.springframework:spring-jms"
+    compile "org.springframework:spring-messaging"
+    compile "org.springframework:spring-orm"
+    compile "org.springframework:spring-oxm"
+    compile "org.springframework:spring-tx"
+    compile "org.springframework:spring-web"
+    compile "org.springframework:spring-webmvc"
 
-    compile "io.springfox:springfox-swagger2:${vSwagger}"
-    compile "io.springfox:springfox-swagger-ui:${vSwagger}"
+    compile "io.springfox:springfox-swagger2"
+    compile "io.springfox:springfox-swagger-ui"
 
-    compile "org.springframework.security:spring-security-acl:${vSpringSecurity}"
-    compile "org.springframework.security:spring-security-aspects:${vSpringSecurity}"
-    compile "org.springframework.security:spring-security-config:${vSpringSecurity}"
-    compile "org.springframework.security:spring-security-ldap:${vSpringSecurity}"
-    compile "org.springframework.security:spring-security-taglibs:${vSpringSecurity}"
-    compile "org.springframework.ldap:spring-ldap-core:2.0.4.RELEASE"
+    compile "org.springframework.security:spring-security-acl"
+    compile "org.springframework.security:spring-security-aspects"
+    compile "org.springframework.security:spring-security-config"
+    compile "org.springframework.security:spring-security-ldap"
+    compile "org.springframework.security:spring-security-taglibs"
+    compile "org.springframework.ldap:spring-ldap-core"
 
-    compile "ecs:ecs:1.4.2"
-    compile("stratum:stratum:1.0") {
+    compile "ecs:ecs"
+    compile("stratum:stratum") {
         transitive = false
     }
 
-    testCompile "junit:junit:${vJunit}"
-    testCompile "org.springframework:spring-test:${vSpring}"
+    testCompile "junit:junit"
+    testCompile "org.springframework:spring-test"
 }
 
 publishing.publications {
