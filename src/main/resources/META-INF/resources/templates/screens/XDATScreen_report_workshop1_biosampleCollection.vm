@@ -1,4 +1,4 @@
-$page.setTitle("Biosamples")
+$page.setTitle("Biosample1s")
 $page.setLinkColor($ui.alink)
 $page.setVlinkColor($ui.vlink)
 
@@ -33,42 +33,42 @@ $page.setVlinkColor($ui.vlink)
 			<table>
                <tr>
                     <td colspan="3" style="padding-top: 20px; padding-bottom: 10px; text-align: left; vertical-align: middle;">
-                        <span style="font-family: $ui.sansSerifFonts; font-size: small; "><b>Biosamples</b></span>
+                        <span style="font-family: $ui.sansSerifFonts; font-size: small; "><b>Biosample1s</b></span>
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("DNA")
                     <td valign="top">
-                        #showBoolean("workshop1:biosampleCollection/dna" $item)
+                        #showBoolean("workshop1:biosample1Collection/dna" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("RNA")
                     <td valign="top">
-                        #showBoolean("workshop1:biosampleCollection/rna" $item)
+                        #showBoolean("workshop1:biosample1Collection/rna" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("Plasma")
                     <td     valign="top">
-                        #showBoolean("workshop1:biosampleCollection/plasma" $item)
+                        #showBoolean("workshop1:biosample1Collection/plasma" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("Serum")
                     <td valign="top">
-                        #showBoolean("workshop1:biosampleCollection/serum" $item)
+                        #showBoolean("workshop1:biosample1Collection/serum" $item)
                     </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     #formLabel("CSF")
                     <td valign="top">
-                        #showBoolean("workshop1:biosampleCollection/csf" $item)
+                        #showBoolean("workshop1:biosample1Collection/csf" $item)
                     </td>
                 </tr>
                 <tr>

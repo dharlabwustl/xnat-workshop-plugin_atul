@@ -1,4 +1,4 @@
-$page.setTitle("Biosamples")
+$page.setTitle("Biosample1s")
 $page.setLinkColor($ui.alink)
 $page.setVlinkColor($ui.vlink)
 <script type="text/javascript">
@@ -19,17 +19,17 @@ window.currentLabel="$!om.getLabel()";
 #if ($data.message)
 <div class="error">$data.message</div>
 #end
-<div id="biosampleAssessmentFormDiv">
-<form ID="biosampleAssessmentForm" name="biosampleAssessmentForm" method="post" action="$link.setAction("ModifySubjectAssessorData")">
+<div id="biosample1AssessmentFormDiv">
+<form ID="biosample1AssessmentForm" name="biosample1AssessmentForm" method="post" action="$link.setAction("ModifySubjectAssessorData")">
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{subjectId}">
-    <input type='hidden' name='workshop1:biosampleCollection/ID' value='$!item.getProperty("ID")'/>
-    <input type="hidden" name="workshop1:biosampleCollection/project" value='$!{project}'/>
-    <input type='hidden' name='workshop1:biosampleCollection/subject_ID' value='$!{subjectId}'/>
-    <input type='hidden' name='workshop1:biosampleCollection/label' value='$!label'/>
-    <input type="hidden" name="workshop1:biosampleCollection.date.month" id="workshop1:biosampleCollection.date.month" value=""/>
-    <input type="hidden" name="workshop1:biosampleCollection.date.date" id="workshop1:biosampleCollection.date.date" value=""/>
-    <input type="hidden" name="workshop1:biosampleCollection.date.year" id="workshop1:biosampleCollection.date.year" value=""/>
+    <input type='hidden' name='workshop1:biosample1Collection/ID' value='$!item.getProperty("ID")'/>
+    <input type="hidden" name="workshop1:biosample1Collection/project" value='$!{project}'/>
+    <input type='hidden' name='workshop1:biosample1Collection/subject_ID' value='$!{subjectId}'/>
+    <input type='hidden' name='workshop1:biosample1Collection/label' value='$!label'/>
+    <input type="hidden" name="workshop1:biosample1Collection.date.month" id="workshop1:biosample1Collection.date.month" value=""/>
+    <input type="hidden" name="workshop1:biosample1Collection.date.date" id="workshop1:biosample1Collection.date.date" value=""/>
+    <input type="hidden" name="workshop1:biosample1Collection.date.year" id="workshop1:biosample1Collection.date.year" value=""/>
     <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
 
     #if($vr)
@@ -43,7 +43,7 @@ window.currentLabel="$!om.getLabel()";
         <table width="100%">
             <tr>
                 <td align="left" valign="middle">
-                    <div class="edit_title">Biosamples</div>
+                    <div class="edit_title">Biosample1s</div>
                 </td>
             </tr>
         </table>
@@ -59,36 +59,36 @@ window.currentLabel="$!om.getLabel()";
                             <td colspan="2">#parse("/screens/EditProjectSpecificFields.vm")</td>
                         </tr>
                         <tr>
-                             <td colspan="2">Have the following biosamples be taken and stored as per protocol?</td>
+                             <td colspan="2">Have the following biosample1s be taken and stored as per protocol?</td>
                          </tr>
                          <tr>
                              #formLabel("DNA")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/dna" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosample1Collection/dna" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("RNA")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/rna" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosample1Collection/rna" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("Plasma")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/plasma" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosample1Collection/plasma" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("Serum")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/serum" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosample1Collection/serum" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("CSF")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/CSF" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosample1Collection/CSF" $item $vr)
                              </td>
                          </tr>
                      </table>
@@ -114,10 +114,11 @@ window.currentLabel="$!om.getLabel()";
 <script type="text/javascript">
     function validateForm() {
         var today = new Date();
-        document.getElementById('workshop1:biosampleCollection.date.month').value = today.getMonth();
-        document.getElementById('workshop1:biosampleCollection.date.date').value = today.getDate();
-        document.getElementById('workshop1:biosampleCollection.date.year').value = today.getFullYear();
-        document.biosampleAssessmentForm.submit();
+        document.getElementById('workshop1:biosample1Collection.date.month').value = today.getMonth();
+        document.getElementById('workshop1:biosample1Collection.date.date').value = today.getDate();
+        document.getElementById('workshop1:biosample1Collection.date.year').value = today.getFullYear();
+
+        document.biosample1AssessmentForm.submit();
         return true;
     }
 </script>
