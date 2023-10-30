@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ xnat-workshop: /Users/rherrick/Development/XNAT/1.7/plugins/xnat-workshop-plugin/src/main/resources/schemas/workshop/workshop.xsd
+  ~ xnat-atul: /Users/rherrick/Development/XNAT/1.7/plugins/xnat-atul-plugin/src/main/resources/schemas/atul/atul.xsd
   ~ XNAT http://www.xnat.org
   ~ Copyright (c) 2017, Washington University School of Medicine
   ~ All Rights Reserved
@@ -8,12 +8,12 @@
   ~ Released under the Simplified BSD.
   -->
 
-<xs:schema targetNamespace="http://nrg.wustl.edu/workshop" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema targetNamespace="http://nrg.wustl.edu/atul" xmlns:atul="http://nrg.wustl.edu/atul" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://nrg.wustl.edu/xnat" schemaLocation="../xnat/xnat.xsd"/>
-	<xs:element name="BiosampleCollection" type="workshop:biosampleCollection"/>
-	<xs:complexType name="biosampleCollection">
+	<xs:element name="NwuCollection" type="atul:nwuCollection"/>
+	<xs:complexType name="nwuCollection">
 		<xs:annotation>
-			<xs:documentation>Indicates whether the required biosample collections have been acquired per study protocol.</xs:documentation>
+			<xs:documentation>Indicates whether the required nwu collections have been acquired per study protocol.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="xnat:subjectAssessorData">
