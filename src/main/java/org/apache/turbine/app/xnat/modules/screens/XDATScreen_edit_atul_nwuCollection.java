@@ -12,7 +12,7 @@ package org.apache.turbine.app.xnat.modules.screens;
 import org.apache.turbine.util.RunData;
 import org.apache.velocity.context.Context;
 import org.nrg.xdat.XDAT;
-import org.nrg.xdat.om.AtulNwucollection;
+//import org.nrg.xdat.om.AtulNwucollection;
 import org.nrg.xdat.om.XnatSubjectassessordata;
 import org.nrg.xdat.om.XnatSubjectdata;
 import org.nrg.xft.XFTItem;
