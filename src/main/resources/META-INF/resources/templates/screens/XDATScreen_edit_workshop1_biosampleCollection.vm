@@ -23,13 +23,13 @@ window.currentLabel="$!om.getLabel()";
 <form ID="biosampleAssessmentForm" name="biosampleAssessmentForm" method="post" action="$link.setAction("ModifySubjectAssessorData")">
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{subjectId}">
-    <input type='hidden' name='workshop:biosampleCollection/ID' value='$!item.getProperty("ID")'/>
-    <input type="hidden" name="workshop:biosampleCollection/project" value='$!{project}'/>
-    <input type='hidden' name='workshop:biosampleCollection/subject_ID' value='$!{subjectId}'/>
-    <input type='hidden' name='workshop:biosampleCollection/label' value='$!label'/>
-    <input type="hidden" name="workshop:biosampleCollection.date.month" id="workshop:biosampleCollection.date.month" value=""/>
-    <input type="hidden" name="workshop:biosampleCollection.date.date" id="workshop:biosampleCollection.date.date" value=""/>
-    <input type="hidden" name="workshop:biosampleCollection.date.year" id="workshop:biosampleCollection.date.year" value=""/>
+    <input type='hidden' name='workshop1:biosampleCollection/ID' value='$!item.getProperty("ID")'/>
+    <input type="hidden" name="workshop1:biosampleCollection/project" value='$!{project}'/>
+    <input type='hidden' name='workshop1:biosampleCollection/subject_ID' value='$!{subjectId}'/>
+    <input type='hidden' name='workshop1:biosampleCollection/label' value='$!label'/>
+    <input type="hidden" name="workshop1:biosampleCollection.date.month" id="workshop1:biosampleCollection.date.month" value=""/>
+    <input type="hidden" name="workshop1:biosampleCollection.date.date" id="workshop1:biosampleCollection.date.date" value=""/>
+    <input type="hidden" name="workshop1:biosampleCollection.date.year" id="workshop1:biosampleCollection.date.year" value=""/>
     <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
 
     #if($vr)
@@ -64,31 +64,31 @@ window.currentLabel="$!om.getLabel()";
                          <tr>
                              #formLabel("DNA")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/dna" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/dna" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("RNA")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/rna" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/rna" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("Plasma")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/plasma" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/plasma" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("Serum")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/serum" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/serum" $item $vr)
                              </td>
                          </tr>
                          <tr>
                              #formLabel("CSF")
                              <td>
-                                 #xdatBooleanRadioYesNoWithoutDefault("workshop:biosampleCollection/CSF" $item $vr)
+                                 #xdatBooleanRadioYesNoWithoutDefault("workshop1:biosampleCollection/CSF" $item $vr)
                              </td>
                          </tr>
                      </table>
@@ -114,9 +114,9 @@ window.currentLabel="$!om.getLabel()";
 <script type="text/javascript">
     function validateForm() {
         var today = new Date();
-        document.getElementById('workshop:biosampleCollection.date.month').value = today.getMonth();
-        document.getElementById('workshop:biosampleCollection.date.date').value = today.getDate();
-        document.getElementById('workshop:biosampleCollection.date.year').value = today.getFullYear();
+        document.getElementById('workshop1:biosampleCollection.date.month').value = today.getMonth();
+        document.getElementById('workshop1:biosampleCollection.date.date').value = today.getDate();
+        document.getElementById('workshop1:biosampleCollection.date.year').value = today.getFullYear();
 
         document.biosampleAssessmentForm.submit();
         return true;
