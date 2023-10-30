@@ -1,5 +1,5 @@
 /*
- * xnat-workshop: org.apache.turbine.app.xnat.modules.screens.XDATScreen_edit_workshop_biosampleCollection
+ * xnat-workshop1: org.apache.turbine.app.xnat.modules.screens.XDATScreen_edit_workshop1_biosampleCollection
  * XNAT http://www.xnat.org
  * Copyright (c) 2017, Washington University School of Medicine
  * All Rights Reserved
@@ -12,7 +12,7 @@ package org.apache.turbine.app.xnat.modules.screens;
 import org.apache.turbine.util.RunData;
 import org.apache.velocity.context.Context;
 import org.nrg.xdat.XDAT;
-import org.nrg.xdat.om.WorkshopBiosamplecollection;
+import org.nrg.xdat.om.Workshop1Biosamplecollection;
 import org.nrg.xdat.om.XnatSubjectassessordata;
 import org.nrg.xdat.om.XnatSubjectdata;
 import org.nrg.xft.XFTItem;
@@ -23,10 +23,10 @@ import org.nrg.xnat.turbine.modules.screens.EditSubjectAssessorScreen;
 
 import java.util.List;
 
-public class XDATScreen_edit_workshop_biosampleCollection extends EditSubjectAssessorScreen {
+public class XDATScreen_edit_workshop1_biosampleCollection extends EditSubjectAssessorScreen {
     @Override
     public String getElementName() {
-        return WorkshopBiosamplecollection.SCHEMA_ELEMENT_NAME;
+        return Workshop1Biosamplecollection.SCHEMA_ELEMENT_NAME;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class XDATScreen_edit_workshop_biosampleCollection extends EditSubjectAss
 
             if (!context.containsKey("label")) {
                 final XnatSubjectdata               subject    = XnatSubjectdata.getXnatSubjectdatasById(subjectId, XDAT.getUserDetails(), false);
-                final List<XnatSubjectassessordata> biosamples = subject.getExperiments_experiment(WorkshopBiosamplecollection.SCHEMA_ELEMENT_NAME);
+                final List<XnatSubjectassessordata> biosamples = subject.getExperiments_experiment(Workshop1Biosamplecollection.SCHEMA_ELEMENT_NAME);
                 final String subjectLabel = subject.getLabel();
                 int index = 1;
                 String label = null;
