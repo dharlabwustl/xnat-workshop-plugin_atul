@@ -117,7 +117,6 @@ window.currentLabel="$!om.getLabel()";
         document.getElementById('workshop1:biosampleCollection.date.month').value = today.getMonth();
         document.getElementById('workshop1:biosampleCollection.date.date').value = today.getDate();
         document.getElementById('workshop1:biosampleCollection.date.year').value = today.getFullYear();
-
         document.biosampleAssessmentForm.submit();
         return true;
     }
