@@ -9,20 +9,9 @@
 
 package org.apache.turbine.app.xnat.modules.screens;
 
-import org.apache.turbine.util.RunData;
-import org.apache.velocity.context.Context;
-import org.nrg.xdat.XDAT;
-import org.nrg.xdat.om.XnatSubjectassessordata;
-import org.nrg.xdat.om.XnatSubjectdata;
-import org.nrg.xft.XFTItem;
-import org.nrg.xft.exception.ElementNotFoundException;
-import org.nrg.xft.exception.FieldNotFoundException;
-import org.nrg.xft.exception.XFTInitException;
 import org.nrg.xnat.turbine.modules.screens.EditSubjectAssessorScreen;
 
-import java.util.List;
-
-public class XDATScreen_edit_atul_nwuCollection extends EditSubjectAssessorScreen {
+public class NWUScreen_edit_atul_nwuCollection extends EditSubjectAssessorScreen {
     @Override
     public String getElementName() {
         return String.valueOf(1); //AtulNwucollection.SCHEMA_ELEMENT_NAME;
