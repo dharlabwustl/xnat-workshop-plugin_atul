@@ -28,7 +28,7 @@ import org.springframework.context.annotation.ComponentScan;
         "org.nrg.xnat.workshop.subjectmapping.repositories",
         "org.nrg.xnat.workshop.subjectmapping.rest",
         "org.nrg.xnat.workshop.subjectmapping.services.impl"})
-public class WorkshopXnatPlugin {
+public class WorkshopXnatPlugin1 {
     @Bean
     public String workshopPluginMessage() {
         return "Hello there from the workshop plugin!";
