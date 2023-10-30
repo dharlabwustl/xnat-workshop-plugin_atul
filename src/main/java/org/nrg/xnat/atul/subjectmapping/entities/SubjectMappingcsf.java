@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "subjectId"), @UniqueConstraint(columnNames = {"recordId", "source"})})
-public class SubjectMapping extends AbstractHibernateEntity {
+public class SubjectMappingcsf extends AbstractHibernateEntity {
     public String getSubjectId() {
         return _subjectId;
     }

@@ -9,7 +9,7 @@
 
 package org.nrg.xnat.atul.plugin;
 
-public @interface SimpleAnnotation {
+public @interface SimpleAnnotationcsf {
     int value() default 0;
     String name() default "";
 }

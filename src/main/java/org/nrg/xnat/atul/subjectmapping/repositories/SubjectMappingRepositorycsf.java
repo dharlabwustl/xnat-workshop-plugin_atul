@@ -10,9 +10,9 @@
 package org.nrg.xnat.atul.subjectmapping.repositories;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateDAO;
-import org.nrg.xnat.atul.subjectmapping.entities.SubjectMapping;
+import org.nrg.xnat.atul.subjectmapping.entities.SubjectMappingcsf;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SubjectMappingRepository extends AbstractHibernateDAO<SubjectMapping> {
+public class SubjectMappingRepositorycsf extends AbstractHibernateDAO<SubjectMappingcsf> {
 }

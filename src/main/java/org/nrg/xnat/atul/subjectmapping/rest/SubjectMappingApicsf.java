@@ -14,9 +14,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
-import org.nrg.xnat.atul.subjectmapping.entities.SubjectMapping;
-import org.nrg.xnat.atul.subjectmapping.preferences.SubjectMappingPreferencesBean;
-import org.nrg.xnat.atul.subjectmapping.services.SubjectMappingService;
+import org.nrg.xnat.atul.subjectmapping.entities.SubjectMappingcsf;
+import org.nrg.xnat.atul.subjectmapping.preferences.SubjectMappingPreferencesBeancsf;
+import org.nrg.xnat.atul.subjectmapping.services.SubjectMappingServicecsf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,49 +31,49 @@ import java.util.List;
 @Api(description = "XNAT Subject Mapping API")
 @XapiRestController
 @RequestMapping(value = "/subjectmapping")
-public class SubjectMappingApi {
+public class SubjectMappingApicsf {
     @Autowired
-    public void setSubjectMappingService(final SubjectMappingService subjectMappingService) {
-        _subjectMappingService = subjectMappingService;
+    public void setSubjectMappingService(final SubjectMappingServicecsf subjectMappingServicecsf) {
+        _subjectMappingServicecsf = subjectMappingServicecsf;
     }
 
     @Autowired
-    final void setSubjectMappingPreferencesBean(final SubjectMappingPreferencesBean preferences) {
+    final void setSubjectMappingPreferencesBean(final SubjectMappingPreferencesBeancsf preferences) {
         _preferences = preferences;
     }
 
     @ApiOperation(value = "Returns a list of all subject mappings.",
                   notes = "Disregards source system.",
-                  response = SubjectMapping.class, responseContainer = "List")
+                  response = SubjectMappingcsf.class, responseContainer = "List")
     @ApiResponses({@ApiResponse(code = 200, message = "Subject mappings successfully retrieved."),
                    @ApiResponse(code = 401, message = "Must be authenticated to access the XNAT REST API."),
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
-    public ResponseEntity<List<SubjectMapping>> getEntities() {
-        return new ResponseEntity<>(_subjectMappingService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<SubjectMappingcsf>> getEntities() {
+        return new ResponseEntity<>(_subjectMappingServicecsf.getAll(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Creates a new subject mapping.",
                   notes = "Disregards source system.",
-                  response = SubjectMapping.class)
+                  response = SubjectMappingcsf.class)
     @ApiResponses({@ApiResponse(code = 200, message = "Subject mapping successfully created."),
                    @ApiResponse(code = 401, message = "Must be authenticated to access the XNAT REST API."),
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST)
-    public ResponseEntity<SubjectMapping> createEntity(@RequestBody final SubjectMapping entity) {
-        final SubjectMapping created = _subjectMappingService.create(entity);
+    public ResponseEntity<SubjectMappingcsf> createEntity(@RequestBody final SubjectMappingcsf entity) {
+        final SubjectMappingcsf created = _subjectMappingServicecsf.create(entity);
         return new ResponseEntity<>(created, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Retrieves the indicated subject mapping.",
                   notes = "Based on primary key ID, not subject or record ID.",
-                  response = SubjectMapping.class)
+                  response = SubjectMappingcsf.class)
     @ApiResponses({@ApiResponse(code = 200, message = "Subject mapping successfully retrieved."),
                    @ApiResponse(code = 401, message = "Must be authenticated to access the XNAT REST API."),
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
-    public ResponseEntity<SubjectMapping> getEntity(@PathVariable final Long id) {
-        return new ResponseEntity<>(_subjectMappingService.retrieve(id), HttpStatus.OK);
+    public ResponseEntity<SubjectMappingcsf> getEntity(@PathVariable final Long id) {
+        return new ResponseEntity<>(_subjectMappingServicecsf.retrieve(id), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Updates the indicated subject mapping.",
@@ -83,11 +83,11 @@ public class SubjectMappingApi {
                    @ApiResponse(code = 401, message = "Must be authenticated to access the XNAT REST API."),
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.PUT)
-    public ResponseEntity<Void> updateEntity(@PathVariable final Long id, @RequestBody final SubjectMapping entity) {
-        final SubjectMapping existing = _subjectMappingService.retrieve(id);
+    public ResponseEntity<Void> updateEntity(@PathVariable final Long id, @RequestBody final SubjectMappingcsf entity) {
+        final SubjectMappingcsf existing = _subjectMappingServicecsf.retrieve(id);
         existing.setSubjectId(entity.getSubjectId());
         existing.setSource(entity.getSource());
-        _subjectMappingService.update(existing);
+        _subjectMappingServicecsf.update(existing);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -99,8 +99,8 @@ public class SubjectMappingApi {
                    @ApiResponse(code = 500, message = "Unexpected error")})
     @RequestMapping(value = "{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteEntity(@PathVariable final Long id) {
-        final SubjectMapping existing = _subjectMappingService.retrieve(id);
-        _subjectMappingService.delete(existing);
+        final SubjectMappingcsf existing = _subjectMappingServicecsf.retrieve(id);
+        _subjectMappingServicecsf.delete(existing);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -124,6 +124,6 @@ public class SubjectMappingApi {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    private SubjectMappingService         _subjectMappingService;
-    private SubjectMappingPreferencesBean _preferences;
+    private SubjectMappingServicecsf _subjectMappingServicecsf;
+    private SubjectMappingPreferencesBeancsf _preferences;
 }

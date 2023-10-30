@@ -20,9 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @NrgPreferenceBean(toolId = "subjectMapping", toolName = "XNAT Subject Mapping Plugin")
-public class SubjectMappingPreferencesBean extends AbstractPreferenceBean {
+public class SubjectMappingPreferencesBeancsf extends AbstractPreferenceBean {
     @Autowired
-    public SubjectMappingPreferencesBean(final NrgPreferenceService preferenceService, final ConfigPaths configFolderPaths) {
+    public SubjectMappingPreferencesBeancsf(final NrgPreferenceService preferenceService, final ConfigPaths configFolderPaths) {
         super(preferenceService, configFolderPaths);
     }
 
