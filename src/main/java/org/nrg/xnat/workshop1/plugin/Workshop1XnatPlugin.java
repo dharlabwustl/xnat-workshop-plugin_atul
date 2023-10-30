@@ -18,10 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @XnatPlugin(value = "workshop1Plugin", name = "XNAT 1.7 Workshop1 2016 Plugin", entityPackages = "org.nrg.xnat.workshop1.entities",
             dataModels = {@XnatDataModel(value = Workshop1Biosample1collectionBean.SCHEMA_ELEMENT_NAME,
                                          singular = "Biosample1 Collection",
-                                         plural = "Biosample1 Collections"),
-                          @XnatDataModel(value = RadRadiologyreaddataBean.SCHEMA_ELEMENT_NAME,
-                                         singular = "Radiology Read",
-                                         plural = "Radiology Reads")})
+                                         plural = "Biosample1 Collections")})
 @ComponentScan({"org.nrg.xnat.workshop1.subjectmapping.preferences",
         "org.nrg.xnat.workshop1.subjectmapping.repositories",
         "org.nrg.xnat.workshop1.subjectmapping.rest",
