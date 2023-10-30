@@ -1,5 +1,5 @@
 /*
- * xnat-workshop: build.gradle
+ * xnat-workshop1: build.gradle
  * XNAT http://www.xnat.org
  * Copyright (c) 2017, Washington University School of Medicine
  * All Rights Reserved
@@ -7,7 +7,7 @@
  * Released under the Simplified BSD.
  */
 
-def groupName = 'org.nrg.xnat.workshop'
+def groupName = 'org.nrg.xnat.workshop1'
 def pluginVersion = '1.0.0'
 
 group groupName
@@ -188,14 +188,14 @@ publishing.publications {
 
         pom.withXml {
             def root = asNode()
-            root.appendNode('name', 'XNAT Workshop 2016 Plugin')
-            root.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
+            root.appendNode('name', 'XNAT Workshop1 2016 Plugin')
+            root.appendNode('url', 'https://github.com/XnatWorkshop1/xnat-workshop1-plugin')
             root.appendNode('inceptionYear', '2016')
 
             def scm = root.appendNode('scm')
-            scm.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
-            scm.appendNode('connection', 'scm:https://github.com/XnatWorkshop/xnat-workshop-plugin.git')
-            scm.appendNode('developerConnection', 'scm:git://github.com/XnatWorkshop/xnat-workshop-plugin.git')
+            scm.appendNode('url', 'https://github.com/XnatWorkshop1/xnat-workshop1-plugin')
+            scm.appendNode('connection', 'scm:https://github.com/XnatWorkshop1/xnat-workshop1-plugin.git')
+            scm.appendNode('developerConnection', 'scm:git://github.com/XnatWorkshop1/xnat-workshop1-plugin.git')
 
             def license = root.appendNode('licenses').appendNode('license')
             license.appendNode('name', 'Simplified BSD 2-Clause License')
