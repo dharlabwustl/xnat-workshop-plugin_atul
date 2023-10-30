@@ -14,7 +14,7 @@ import org.nrg.xnat.turbine.modules.screens.EditSubjectAssessorScreen;
 public class NWUScreen_edit_atul_nwuCollection extends EditSubjectAssessorScreen {
     @Override
     public String getElementName() {
-        return String.valueOf(1); //AtulNwucollection.SCHEMA_ELEMENT_NAME;
+        return AtulNwucollection.SCHEMA_ELEMENT_NAME;
     }
 //
 //    @Override
