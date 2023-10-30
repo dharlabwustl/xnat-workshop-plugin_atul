@@ -7,7 +7,7 @@
  * Released under the Simplified BSD.
  */
 
-def groupName = 'org.nrg.xnat.workshop'
+def groupName = 'org.nrg.xnat.atul'
 def pluginVersion = '1.0.0'
 
 group groupName
