@@ -195,7 +195,7 @@ publishing.publications {
             def scm = root.appendNode('scm')
             scm.appendNode('url', 'https://github.com/dharlabwustl/xnat-workshop-plugin_atul')
             scm.appendNode('connection', 'scm:https://github.com/dharlabwustl/xnat-workshop-plugin_atul.git')
-            scm.appendNode('developerConnection', 'scm:git://github.com/XnatWorkshop1/xnat-workshop1-plugin.git')
+            scm.appendNode('developerConnection', 'scm:git://github.com/dharlabwustl/xnat-workshop-plugin_atul.git')
 
             def license = root.appendNode('licenses').appendNode('license')
             license.appendNode('name', 'Simplified BSD 2-Clause License')
