@@ -1,0 +1,25 @@
+.edema-report-body {
+    width: 70%;
+}
+.snapshot-preview {
+    background-color: #040404;
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    height: 400px;
+    width: 400px;
+}
+.snapshot-frame {
+    background-color: #040404;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+img.scan-snapshot {
+    max-width: 100%;
+}

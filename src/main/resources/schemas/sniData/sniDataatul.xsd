@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ xnat-workshop: /Users/rherrick/Development/XNAT/1.7/plugins/xnat-workshop-plugin/src/main/resources/schemas/workshop/sniDataatul.xsd
+  ~ XNAT http://www.xnat.org
+  ~ Copyright (c) 2017, Washington University School of Medicine
+  ~ All Rights Reserved
+  ~
+  ~ Released under the Simplified BSD.
+  -->
+
+<xs:schema targetNamespace="http://nrg.wustl.edu/workshop" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://nrg.wustl.edu/xnat" schemaLocation="../xnat/xnat.xsd"/>
+	<xs:element name="BiosampleCollection" type="sni:sniDataatulCollection"/>
+	<xs:complexType name="biosampleCollection">
+		<xs:annotation>
+			<xs:documentation>Indicates whether the required biosample collections have been acquired per study protocol.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="xnat:subjectAssessorData">
+				<xs:sequence>
+					<xs:element name="dna">
+						<xs:annotation>
+							<xs:documentation>DNA</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:boolean"/>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="rna">
+						<xs:annotation>
+							<xs:documentation>RNA</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:boolean"/>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="plasma">
+						<xs:annotation>
+							<xs:documentation>Plasma</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:boolean"/>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="serum">
+						<xs:annotation>
+							<xs:documentation>Serum</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:boolean"/>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="csf">
+						<xs:annotation>
+							<xs:documentation>CSF</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:boolean"/>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
