@@ -7,7 +7,7 @@
  * Released under the Simplified BSD.
  */
 
-package org.nrg.xnat.workshop.plugin;
+package org.nrg.xnat.atul.plugin;
 
 public @interface SimpleAnnotation {
     int value() default 0;
